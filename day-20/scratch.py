@@ -1,28 +1,25 @@
-SNAKE_WIDTH = 1
+class Animal:
+    def __init__(self):
+        self.num_eyes = 2
 
-def add_tail(color, pos) -> Turtle:
-    new_tail = Turtle()
-    new_tail.penup()
-    new_tail.shape("square")
-    new_tail.turtlesize(stretch_wid=SNAKE_WIDTH, stretch_len=SNAKE_WIDTH)
-    new_tail.color(color)
-    new_tail.speed('fastest')
-    new_tail.setpos(pos)
-    return new_tail
+    def breathe(self):
+        print("Inhale, exhale.")
 
-snake = []
 
-game_over = False
-while not game_over:
-    # coords = snake[0].pos()
-    # snake[0].forward(DISTANCE)
-    # snake[-1].setpos(coords)
-    # snake.append(add_tail(color='white', pos=coords))
+class Fish(Animal):
+    def __init__(self):
+        super().__init__()
 
-    if abs(snake[0].xcor()) > WINDOW_WIDTH / 2 or abs(snake[0].ycor()) > WINDOW_HEIGHT / 2:
-        game_over = True
-    screen.update()
-    time.sleep(0.1)
+    @staticmethod
+    def swim() -> None:
+        print("moving in water.")
 
-screen.exitonclick()
-screen.update()
+    def breathe(self) -> None:
+        super().breathe()
+        print("doing this underwater.")
+
+
+nemo = Fish()
+
+nemo.swim()
+nemo.breathe()
